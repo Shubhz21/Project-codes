@@ -16,9 +16,10 @@ String employeeUsername = request.getAttribute("username").toString();
 String employeeContact = request.getAttribute("contact").toString();
 String employeeAddress = request.getAttribute("address").toString();
 
- out.println("<h2>Please verify the details</h2>"); 
+ out.println("<h2><br/>Please verify the details</h2>"); 
  %>
  <table border="1" style="width: 80%; margin-left: auto; margin-right: auto; " class="table">
+ <br/>
     <tr>
      <td><b>First Name</b></td>
      <td><%= employeeFirstName %></td>

@@ -14,7 +14,7 @@ public class EmployeeDAO {
 
         int result = 0;
 
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
         //Step 1: Established the connection with database
       try (Connection connection = DriverManager
