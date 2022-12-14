@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      
+        function validateUser()
+        {
+          var fname = document.getElementById('fname').value;
+          var lname= document.getElementById('lname').value;
+          var ID= document.getElementById('mb').value;
+  
+          if(fname =="" || lname =="" )
+          {
+            document.getElementById('fname').style="border-color: red";
+            document.getElementById('lname').style="border-color: red";
+            document.getElementById('mb').style="border-color: red";
+            alert('Fields Are Mandatory! ');
+          }
+          else
+          {
+            if(ID==123456789)
+            {
+              alert('details are valid & reg was successful')
+            }
+            else
+            {
+              alert('Invalid Candidate details')
+            }
+          }
+        }
+      </script>
+    <title>Document</title>
+    
+</head>
+<body>
+  <h1>*Welcome to Pathfortune Software Training Institute*</h1>
+
+       
+  <h3>*Candidate Registration From*</h3>
+
+First name<input type="text"  id="fname" placeholder="fname"><span style="color: red;"></span><br/><br/>
+Last name<input type="password"  id="lname" placeholder="lname"><span style="color: red;"></span>
+<br/><br/>Gender:  Male<input type="radio" name="mygender"> Female<input type="radio" name="mygender">
+<br/><br/>ID : <input type="text" id="mb"><span style="color: red;"></span> 
+<input type="button" value="submit" onclick="validateUser();">
+
+    
+</body>
+</html>
