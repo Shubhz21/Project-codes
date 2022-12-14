@@ -28,24 +28,27 @@ public class Fruitlist extends HttpServlet {
 		String txt = request.getParameter("txt");
 				
 				 Connection con;
-				 PreparedStatement stmt;
-				 ResultSet rs;
+		
+				    PreparedStatement stmt;
+		
+				     ResultSet rs;
 				try {
-				 
-				 
 				 Class.forName("org.postgresql.Driver");
 				 
-				 con = DriverManager.getConnection("jdbc:postgresql://localhost/fruitlist","list","list");
+					con = DriverManager.getConnection("jdbc:postgresql://localhost/fruitlist","list","list");
 				 
-				 stmt = con.prepareStatement("select * from fruits where fruitname = ?");
+				   stmt = con.prepareStatement("select * from fruits where fruitname = ?");
 				 
-				 stmt.setString(1,txt);
+				  stmt.setString(1,txt);
 				 
-				 rs = stmt.executeQuery();
+				
+					rs = stmt.executeQuery();
 				 
-				 rs.next();
+				
+				rs.next();
 				 
-				 pw.println("<center><h2>Available quantity of "+rs.getString(1)+" is : "+rs.getInt(2)+"</h2></center>");
+				
+					pw.println("<center><h2>Available quantity of "+rs.getString(1)+" is : "+rs.getInt(2)+"</h2></center>");
 				 
 				 
 				 }
