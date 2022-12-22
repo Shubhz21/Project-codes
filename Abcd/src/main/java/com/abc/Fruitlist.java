@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 
 import javax.servlet.ServletException;
@@ -28,27 +29,27 @@ public class Fruitlist extends HttpServlet {
 		String txt = request.getParameter("txt");
 				
 				 Connection con;
-		
-				    PreparedStatement stmt;
-		
-				     ResultSet rs;
+				 
+				 PreparedStatement stmt;
+				 
+				 ResultSet rs;
+				 
 				try {
-				 Class.forName("org.postgresql.Driver");
 				 
-					con = DriverManager.getConnection("jdbc:postgresql://localhost/fruitlist","list","list");
 				 
-				   stmt = con.prepareStatement("select * from fruits where fruitname = ?");
+				 Class.forName("com.mysql.cj.jdbc.Driver");
 				 
-				  stmt.setString(1,txt);
+				 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fruitlist","root","admin");
 				 
-				
-					rs = stmt.executeQuery();
+				 stmt = con.prepareStatement("select * from fruits where fruitname = ?");
 				 
-				
-				rs.next();
+				 stmt.setString(1,txt);
 				 
-				
-					pw.println("<center><h2>Available quantity of "+rs.getString(1)+" is : "+rs.getInt(2)+"</h2></center>");
+				 rs = stmt.executeQuery();
+				 
+				 rs.next();
+				 
+				 pw.println("<center><h2>Available quantity of "+rs.getString(1)+" is : "+rs.getInt(2)+"</h2></center>");
 				 
 				 
 				 }
@@ -57,9 +58,13 @@ public class Fruitlist extends HttpServlet {
 //					 pw.println("<center><h2>Invalid Data..!</h2></center>");
 //					 
 //				 }
-				catch(Exception p) {
-					 pw.println("<center><h2>Data not Found</h2></center>"+p);
-				 }
+				catch(SQLException p) {
+					 pw.println("<center><h2>Data not Found</h2></center>");
+				 } catch (ClassNotFoundException e) {
+					
+					e.printStackTrace();
+					System.out.println(e);
+				}
 	}
 
 }
